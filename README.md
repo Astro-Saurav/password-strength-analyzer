@@ -94,19 +94,52 @@ Then open `frontend/index.html` in your browser.
 | POST | `/api/analyze` | ✅ | Analyze password |
 | GET | `/api/health` | ❌ | Health check |
 
-### Analyze Response
+### Analyze Response Sample
 ```json
 {
   "score": 78.5,
   "strength": "Strong",
   "confidence": 91.2,
-  "suggestions": [
-    "⚡ Special characters exponentially increase password strength.",
-    "📏 14+ characters dramatically increase crack time."
-  ],
+  "suggestions": ["⚡ Special characters increase strength.", "📏 14+ characters are best."],
   "class_probabilities": {
-    "Very Weak": 0.1, "Weak": 1.2,
-    "Moderate": 7.5, "Strong": 91.2, "Very Strong": 0.0
+    "Very Weak": 0.1, "Weak": 1.2, "Moderate": 7.5, "Strong": 91.2, "Very Strong": 0.0
   }
 }
 ```
+
+---
+
+## 🌍 Production Deployment
+
+### 1. Backend (Render)
+- **Repo**: Connect your GitHub repository.
+- **Root Directory**: `backend`
+- **Build Command**: `pip install -r requirements.txt`
+- **Start Command**: `gunicorn main:app -w 1 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT`
+- **Environment Variables**: See below.
+
+### 2. Frontend (Vercel)
+- **Framework Preset**: `Other` (Static HTML)
+- **Root Directory**: `frontend`
+- **Output Directory**: `.`
+- **Note**: The frontend detects if it's on localhost or production via `index.html`.
+
+---
+
+## 🔑 Environment Variables (Backend)
+
+| Variable | Description | Example |
+|---|---|---|
+| `PORT` | Backend port | `8000` |
+| `FRONTEND_URL` | Your Vercel frontend URL | `https://your-app.vercel.app` |
+| `JWT_SECRET` | Secret key for token signing | `use secrets.token_urlsafe(32)` |
+| `RENDER` | Environment flag | `production` |
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend**: Vanilla HTML5, CSS3, JS (ES6+)
+- **Backend**: Python 3.9+, FastAPI
+- **ML**: Scikit-learn (RandomForest, GradientBoosting)
+- **Auth**: JWT (JSON Web Tokens)
+- **Server**: Gunicorn + Uvicorn (Production ready)
