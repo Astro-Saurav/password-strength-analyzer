@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+\title{\textbf{Project Synopsis: PassGuard AI}\\ \large Intelligent Password Strength Analyzer using Ensemble Machine Learning}
+\author{Astro-Saurav}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+In the modern digital landscape, weak passwords remain the primary entry point for cyberattacks. Traditional password meters rely on basic regex patterns which are easily bypassed. \textbf{PassGuard AI} is a full-stack solution that replaces these rigid rules with an \textbf{Ensemble Machine Learning} model. It evaluates passwords across 12 distinct mathematical and linguistic features to provide a high-fidelity intelligence score.
+
+\section{Objectives}
+\begin{itemize}[noitemsep]
+    \item To develop a non-deterministic password evaluation system using AI.
+    \item To provide real-time, actionable security recommendations to users.
+    \item To implement a secure, industry-standard authentication system using JWT.
+    \item To ensure high availability and scalability through cloud-native deployment (Render/Vercel).
+\end{itemize}
+
+\section{Proposed System Architecture}
+\begin{description}
+    \item[Frontend:] A modern, responsive dashboard built with vanilla HTML5/CSS3/JS, utilizing asynchronous fetch API calls for a seamless user experience.
+    \item[Backend:] A high-performance FastAPI server (Python) handling rate-limiting, JWT-based authentication, and ML inference.
+    \item[Machine Learning Layer:] A Voting Classifier ensemble consisting of \textbf{Random Forest} and \textbf{Gradient Boosting} algorithms, trained on 15,000+ real-world and synthetic password patterns.
+\end{description}
+
+\section{Technical Specifications}
+\subsection{Software Requirements}
+\begin{itemize}[noitemsep]
+    \item Python 3.9+ (Backend)
+    \item FastAPI \& Uvicorn (Web Framework)
+    \item Scikit-Learn (ML Engine)
+    \item JWT (Authentication Engine)
+\end{itemize}
+
+\subsection{Hardware Requirements (Minimum)}
+\begin{itemize}[noitemsep]
+    \item Processor: 1.5GHz+ (Dual Core)
+    \item RAM: 512MB
+    \item Disk Space: 100MB
+\end{itemize}
+
+\section{Methodology}
+The system operates in four primary stages:
+\begin{enumerate}
+    \item \textbf{Data Ingestion:} Raw password strings are captured via a secure, masked input.
+    \item \textbf{Feature Extraction:} The string is decomposed into 12 features, including \textbf{Shannon Entropy}, character diversity, sequential runs, and keyboard pattern detection.
+    \item \textbf{ML Inference:} The processed feature vector is passed through the pre-trained ensemble model to predict a strength class.
+    \item \textbf{Actionable Feedback:} An AI-driven suggestion generator provides specific security tips based on missing entropy.
+\end{enumerate}
+
+\section{Conclusion}
+PassGuard AI represents a significant shift from static security rules to dynamic, intelligent analysis. By combining modern web technologies with advanced data science, it provides a robust defense against modern password-cracking techniques.
+
+\end{document}
